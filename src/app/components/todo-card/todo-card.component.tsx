@@ -13,12 +13,11 @@ class TodoCard extends React.Component<TodoCardProps, TodoCardState> {
   render() {
     const { todo, onToggle } = this.props;
     return (
-      <Card style={{ margin: 10 }}>
+      <Card style={{ margin: 10 }} onClick={() => onToggle(todo)}>
         <CardContent>
           <Typography
             variant='body1'
-            style={{ textDecoration: todo.completed ? 'line-through' : '' }}
-            onClick={() => onToggle(todo)}>
+            style={{ textDecoration: todo.completed ? 'line-through' : '', textAlign: 'center' }}>
             {todo.task}
           </Typography>
         </CardContent>
