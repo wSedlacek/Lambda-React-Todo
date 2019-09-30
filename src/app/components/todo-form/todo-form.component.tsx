@@ -1,6 +1,12 @@
 import React from 'react';
+import { Todo } from '../../models/Todo';
 
-class TodoForm extends React.Component {
+type TodoFormProps = {
+  onSubmit: (title: string) => void;
+};
+type TodoFormState = {};
+
+class TodoForm extends React.Component<TodoFormProps, TodoFormState> {
   render() {
     return <div></div>;
   }
