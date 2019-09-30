@@ -4,14 +4,14 @@ import { TodoForm } from '../../components/todo-form/todo-form.component';
 import { TodoList } from '../../components/todo-list/todo-list.component';
 import { Todo } from '../../models/Todo';
 
-type AppProps = {};
-type AppState = {
+type TodoProps = {};
+type TodoState = {
   itterator: number;
   todos: Todo[];
 };
 
-class TodoPage extends React.Component<AppProps, AppState> {
-  constructor(props: AppProps) {
+class TodoPage extends React.Component<TodoProps, TodoState> {
+  constructor(props: TodoProps) {
     super(props);
     this.state = {
       itterator: 0,

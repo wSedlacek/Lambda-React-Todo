@@ -5,10 +5,10 @@ import { TodoPage } from './pages/todo/todo.page';
 class App extends React.Component {
   render() {
     return (
-      <div>
+      <React.Fragment>
         <h2>Todos! But for real this time!</h2>
         <TodoPage />
-      </div>
+      </React.Fragment>
     );
   }
 }
