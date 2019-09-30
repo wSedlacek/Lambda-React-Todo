@@ -22,7 +22,7 @@ class TodoForm extends React.Component<TodoFormProps, TodoFormState> {
     e.preventDefault();
     const { onSubmit } = this.props;
     const { title } = this.state;
-    onSubmit(title);
+    if (title) onSubmit(title);
   }
 
   render() {
