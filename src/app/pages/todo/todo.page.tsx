@@ -13,14 +13,33 @@ type TodoState = {
 class TodoPage extends React.Component<TodoProps, TodoState> {
   constructor(props: TodoProps) {
     super(props);
+
+    let storedTodos: Todo[] = [];
+
+    try {
+      storedTodos = JSON.parse(localStorage.getItem('todos') || '') as Todo[];
+    } catch {
+      console.warn('Could not find any todos in Local Storage.');
+    }
+
     this.state = {
       itterator: 0,
-      todos: [],
+      todos: storedTodos,
     };
 
+    this.updateTodos = this.updateTodos.bind(this);
     this.createTodo = this.createTodo.bind(this);
     this.toggleTodo = this.toggleTodo.bind(this);
     this.clearTodos = this.clearTodos.bind(this);
+  }
+
+  private updateTodos(todos: Todo[]) {
+    this.setState({
+      ...this.state,
+      todos: [...todos],
+    });
+
+    localStorage.setItem('todos', JSON.stringify(todos));
   }
 
   private createTodo(title: string) {
@@ -31,9 +50,9 @@ class TodoPage extends React.Component<TodoProps, TodoState> {
       task: title,
     };
 
+    this.updateTodos([...todos, newTodo]);
     this.setState({
       itterator: itterator + 1,
-      todos: [...todos, newTodo],
     });
   }
 
@@ -45,13 +64,13 @@ class TodoPage extends React.Component<TodoProps, TodoState> {
       return todo;
     });
 
-    this.setState({ todos: newTodos });
+    this.updateTodos([...newTodos]);
   }
 
   private clearTodos() {
     const { todos } = this.state;
     const newTodos = todos.filter((todo) => !todo.completed);
-    this.setState({ todos: newTodos });
+    this.updateTodos([...newTodos]);
   }
 
   public render() {
