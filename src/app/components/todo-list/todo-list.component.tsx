@@ -13,7 +13,7 @@ type TodoListState = {};
 class TodoList extends React.Component<TodoListProps, TodoListState> {
   render() {
     const { todos, onToggle } = this.props;
-    return todos.map((todo) => <TodoCard todo={todo} onToggle={onToggle}></TodoCard>);
+    return todos.map((todo) => <TodoCard todo={todo} onToggle={onToggle} key={todo.id}></TodoCard>);
   }
 }
 
