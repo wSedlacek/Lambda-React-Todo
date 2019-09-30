@@ -1,17 +1,19 @@
-// your components will all go in this `component` directory.
-// feel free to change this component.js into TodoList.js
 import React from 'react';
+
+import { TodoCard } from '../todo-card/todo-card.component';
+
 import { Todo } from '../../models/Todo';
 
 type TodoListProps = {
   todos: Todo[];
+  onToggle: (todo: Todo) => void;
 };
 type TodoListState = {};
 
 class TodoList extends React.Component<TodoListProps, TodoListState> {
   render() {
-    const { todos } = this.props;
-    return todos.map((todo) => <p>{todo.task}</p>);
+    const { todos, onToggle } = this.props;
+    return todos.map((todo) => <TodoCard todo={todo} onToggle={onToggle}></TodoCard>);
   }
 }
 
