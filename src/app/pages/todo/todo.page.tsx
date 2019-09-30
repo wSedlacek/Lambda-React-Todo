@@ -9,12 +9,14 @@ type AppState = {
   todos: Todo[];
 };
 
-class App extends React.Component<AppProps, AppState> {
+class TodoPage extends React.Component<AppProps, AppState> {
   constructor(props: AppProps) {
     super(props);
     this.state = {
       todos: [],
     };
+
+    this.createTodo = this.createTodo.bind(this);
   }
 
   private createTodo(title: string) {
@@ -42,4 +44,4 @@ class App extends React.Component<AppProps, AppState> {
   }
 }
 
-export { App };
+export { TodoPage };

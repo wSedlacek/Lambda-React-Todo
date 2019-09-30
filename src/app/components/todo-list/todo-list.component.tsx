@@ -10,7 +10,8 @@ type TodoListState = {};
 
 class TodoList extends React.Component<TodoListProps, TodoListState> {
   render() {
-    return <div></div>;
+    const { todos } = this.props;
+    return todos.map((todo) => <p>{todo.task}</p>);
   }
 }
 
